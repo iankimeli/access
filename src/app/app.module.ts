@@ -1,28 +1,47 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+// import {HttpClient} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
+import { NgProgressModule } from '@ngx-progressbar/core';
+import { NgProgressHttpModule } from '@ngx-progressbar/http';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './navigation/navigation.component';
+import { NavbarComponent } from './navigation/navbar.component';
+import { SearchComponent } from './user/search.component';
 import { RepositoriesComponent } from './repositories/repositories.component';
+import {RoutingModule} from './routing/routing.module';
+import { RouterModule } from '@angular/router';
 import { SearchFormComponent } from './search-form/search-form.component';
-import { UserComponent } from './user/user.component';
-import { SearchComponent } from './search/search.component';
+import {FormsModule} from '@angular/forms';
+import {SearchRequestService} from './search-request.service';
+import { UpperCasePipe } from './upper-case.pipe';
+
+
+
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
+    NavbarComponent,
+    SearchComponent,
     RepositoriesComponent,
     SearchFormComponent,
-    UserComponent,
-    SearchComponent
+    UpperCasePipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+      RoutingModule,
+      RouterModule,
+      FormsModule,
+      NgProgressModule.forRoot(),
+      NgProgressHttpModule,
+      // HttpClient,
+      HttpClientModule
   ],
-  providers: [],
+  providers: [SearchRequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
