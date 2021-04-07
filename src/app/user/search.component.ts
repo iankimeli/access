@@ -13,15 +13,15 @@ import {User} from '../user';
 
 export class SearchComponent implements OnInit {
     public searchMe = 'wanjiiru';
-    public githubUser: string;
+    public githubUser: string | undefined;
 
-    users: User ;
-    repository: Repository;
-    public searchRepo: string;
+    users: User | undefined ;
+    repository: Repository | undefined;
+    public searchRepo: string | undefined;
     public resultCount = 12;
 
 
-    findUser(username) {
+    findUser(username: string) {
         this.githubUser = '';
         this.searchMe  = username;
         this.ngOnInit();

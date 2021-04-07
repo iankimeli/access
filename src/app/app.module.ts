@@ -6,7 +6,7 @@ import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressHttpModule } from '@ngx-progressbar/http';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navigation/navbar.component';
+import { NavigationComponent } from './navigation/navigation.component';
 import { SearchComponent } from './user/search.component';
 import { RepositoriesComponent } from './repositories/repositories.component';
 import {RoutingModule} from './routing/routing.module';
@@ -25,7 +25,7 @@ import { UpperCasePipe } from './upper-case.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
+    NavigationComponent,
     SearchComponent,
     RepositoriesComponent,
     SearchFormComponent,
