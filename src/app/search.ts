@@ -1,7 +1,7 @@
 
 export class Search {
     public find: string;
-    constructor(find) {
+    constructor(find: string) {
         this.find = find;
     }
 }

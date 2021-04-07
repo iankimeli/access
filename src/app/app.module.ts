@@ -1,9 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// import {HttpClient} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {HttpClientModule} from '@angular/common/http';
-import { NgProgressModule } from '@ngx-progressbar/core';
-import { NgProgressHttpModule } from '@ngx-progressbar/http';
+//import { NgProgressModule } from '@ngx-progressbar/core';
+//import { NgProgressHttpModule } from '@ngx-progressbar/http';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -36,10 +36,10 @@ import { UpperCasePipe } from './upper-case.pipe';
       RoutingModule,
       RouterModule,
       FormsModule,
-      NgProgressModule.forRoot(),
-      NgProgressHttpModule,
-      // HttpClient,
-      HttpClientModule
+     // NgProgressModule.forRoot(),
+     // NgProgressHttpModule,
+     // HttpClient,
+     HttpClientModule
   ],
   providers: [SearchRequestService],
   bootstrap: [AppComponent]

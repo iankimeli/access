@@ -19,7 +19,7 @@ export class SearchRequestService {
         this.users = new User('', '', '', 0, '', new Date(), 0, 0);
     }
 
-    githubUser(searchName) {
+    githubUser(searchName: string) {
         interface ApiResponse {
             name: string;
             html_url: string;
@@ -32,8 +32,8 @@ export class SearchRequestService {
             avatar_url: string;
         }
 
-        const promise = new Promise((resolve) => {
-            this.http.get<ApiResponse>('https://api.github.com/users/' + searchName + '?access_token=' + environment.myApi).toPromise().then(getResponse => {
+        const promise = new Promise<void>((resolve) => {
+            this.http.get<ApiResponse>(`https://api.github.com/users/${searchName}` ).toPromise().then(getResponse => {
                 this.users.name = getResponse.name;
                 this.users.html_url = getResponse.html_url;
                 this.users.login = getResponse.login;
@@ -49,15 +49,15 @@ export class SearchRequestService {
 
     }
 
-    gitUserRepos(searchMe) {
+    gitUserRepos(searchMe: string) {
         interface ApiResponse {
             name: string;
             description: string;
             created_at: Date;
         }
 
-        const myPromise = new Promise((resolve, reject) => {
-            this.http.get<ApiResponse>('https://api.github.com/users/' + searchMe + '/repos?order=created&sort=asc?access_token=' + environment.myApi).toPromise().then(getRepoResponse => {
+        const myPromise = new Promise<void>((resolve, reject) => {
+            this.http.get<ApiResponse>('https://api.github.com/users/' + searchMe + '/repos?order=created&sort=asc').toPromise().then(getRepoResponse => {
                 this.newRepository = getRepoResponse;
                 resolve();
             }, error => {
@@ -68,13 +68,13 @@ export class SearchRequestService {
     }
 
 
-    gitRepos(searchName) {
+    gitRepos(searchName: string) {
         interface ApiResponse {
             items: any;
         }
 
-        const promise = new Promise((resolve, reject) => {
-            this.http.get<ApiResponse>('https://api.github.com/search/repositories?q=' + searchName + ' &per_page=10 ' + environment.myApi).toPromise().then(getRepoResponse => {
+        const promise = new Promise<void>((resolve, reject) => {
+            this.http.get<ApiResponse>('https://api.github.com/search/repositories?q=' + searchName + ' &per_page=10 ' ).toPromise().then(getRepoResponse => {
                 this.searchRepo = getRepoResponse.items;
 
                 resolve();

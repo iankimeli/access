@@ -12,29 +12,31 @@ import {User} from '../user';
 })
 
 export class SearchComponent implements OnInit {
-    public searchMe = 'wanjiiru';
+    public searchMe = 'iankimeli';
     public githubUser: string | undefined;
 
-    users: User | undefined ;
+    public users: User;
     repository: Repository | undefined;
     public searchRepo: string | undefined;
     public resultCount = 12;
 
 
     findUser(username: string) {
-        this.githubUser = '';
+        this.githubUser = 'iankimeli';
         this.searchMe  = username;
         this.ngOnInit();
     }
 
 
-  constructor(public githubUserRequest: SearchRequestService, public userRepos: SearchRequestService) { }
+  constructor(public githubUserRequest: SearchRequestService, public userRepos: SearchRequestService) { 
+    this.users = this.githubUserRequest.users;
+  }
 
   ngOnInit() {
       this.githubUserRequest.githubUser(this.searchMe);
       this.users = this.githubUserRequest.users;
       this.userRepos.gitUserRepos(this.searchMe);
-      console.log(this.userRepos);
+      
   }
 
 
